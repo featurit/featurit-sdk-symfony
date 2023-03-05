@@ -1,0 +1,20 @@
+parameters:
+  tenant_identifier: '%env(FEATURIT_TENANT_IDENTIFIER)%'
+  environment_key: '%env(FEATURIT_ENVIRONMENT_KEY)%'
+  cache_ttl_minutes: '%env(FEATURIT_CACHE_TTL_MINUTES)%'
+
+services:
+  Featurit\Client\Featurit: '@featurit.client'
+  featurit.client:
+    class: Featurit\Client\Featurit
+    factory: ['Featurit\Client\Symfony\Factories\FeaturitFactory', 'createFeaturit']
+    arguments:
+      - '%tenant_identifier%'
+      - '%environment_key%'
+      - '%cache_ttl_minutes%'
+      - '@featurit.featurit_user_context_provider'
+  featurit.featurit_user_context_provider:
+    class: Featurit\Client\Symfony\Providers\SymfonyFeaturitUserContextProvider
+    arguments:
+      - '@request_stack'
+      - '@security.token_storage'

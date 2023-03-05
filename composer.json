@@ -1,0 +1,42 @@
+{
+    "name": "featurit/featurit-sdk-symfony",
+    "description": "Symfony SDK for FeaturIT",
+    "keywords": ["featurit", "feature flag", "feature toggle", "user targeting", "a b testing", "feature", "feature management", "symfony"],
+    "type": "symfony-bundle",
+    "license": "MIT",
+    "require": {
+        "php": "^8.0.2",
+        "featurit/featurit-sdk-php": "^0.4.0",
+        "symfony/framework-bundle": "^5.2",
+        "nyholm/psr7": "^1.5"
+    },
+    "require-dev": {
+        "twig/twig": "^3.3",
+        "symfony/http-client": "6.3.x-dev",
+        "symfony/phpunit-bridge": "6.3.x-dev",
+        "matthiasnoback/symfony-dependency-injection-test": "^4.3",
+        "symfony/security-core": "6.3.x-dev"
+    },
+    "authors": [
+        {
+            "name": "Featurit",
+            "email": "featurit.tech@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Featurit\\Client\\Symfony\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Featurit\\Client\\Symfony\\Tests\\": "tests/"
+        }
+    },
+    "minimum-stability": "dev",
+    "config": {
+        "allow-plugins": {
+            "php-http/discovery": true
+        }
+    }
+}

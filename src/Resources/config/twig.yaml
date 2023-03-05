@@ -1,0 +1,7 @@
+services:
+  featurit.twig_extension:
+    class: Featurit\Client\Symfony\TwigExtensions\FeaturitTwigExtension
+    arguments:
+      - '@featurit.client'
+    tags:
+      - twig.extension
