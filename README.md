@@ -10,7 +10,7 @@ This package aims to simplify the integration of the FeaturIT API in a Symfony p
 
 ### Dependencies
 
-* PHP >= 7.4
+* PHP >= 8.0.2
 * symfony/framework-bundle >= 5.2
 * psr/http-client-implementation
 * psr/simple-cache-implementation
