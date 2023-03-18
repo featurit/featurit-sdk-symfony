@@ -94,7 +94,35 @@ Inside your twig template, you can use them like this:
 </div>
 ```
 
+### Defining your FeaturitUserContext
+
+In order to show different versions of a feature to different users,
+Featurit needs to know about the attributes your user has in a certain context.
+
+You can define the context using the as follows:
+
+```
+your_method(Featurit $featurit)
+{
+    $contextData = get_your_user_context_data();
+
+    $featurit->setUserContext(
+        new DefaultFeaturitUserContext(
+            $contextData['userId'],
+            $contextData['sessionId'],
+            $contextData['ipAddress'],
+            [
+                'role' => $contextData['role'],
+                ...
+            ]
+        )
+    );
+}
+```
+
 ### Defining a custom FeaturitUserContextProvider
+
+This is an alternative to using `$featurit->setUserContext(...);`.
 
 By default Featurit SDK for Symfony comes with a default FeaturitUserContextProvider
 adapted for Symfony, but if you want to create your own, create a service un your `services.yaml` file as follows:
