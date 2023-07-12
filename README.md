@@ -41,7 +41,9 @@ with the following contents:
 featurit:
     tenant_identifier: '%env(FEATURIT_TENANT_IDENTIFIER)%'
     environment_key: '%env(FEATURIT_ENVIRONMENT_KEY)%'
+    enable_analytics: '%env(FEATURIT_ENABLE_ANALYTICS)%'
     cache_ttl_minutes: '%env(FEATURIT_CACHE_TTL_MINUTES)%'
+    send_analytics_interval_minutes: '%env(FEATURIT_SEND_ANALYTICS_INTERVAL_MINUTES)%'
     featurit_user_context_provider: '@my_service_implementing_featurit_user_context_provider'
 ```
 
@@ -83,7 +85,7 @@ Inside your twig template, you can use them like this:
     <h2>This code will always be visible</h2>
 
     {% if feature_is_active('MY_ACTIVE_FEATURE') %}
-        <h2>This will be visible</h2>
+        <h2>Welcome to MY_ACTIVE_FEATURE!</h2>
     {% endif %}
 
     {% if feature_version_equals('FEATURE_WITH_VERSIONS', 'v1') %}
@@ -124,7 +126,7 @@ your_method(Featurit $featurit)
 
 This is an alternative to using `$featurit->setUserContext(...);`.
 
-By default Featurit SDK for Symfony comes with a default FeaturitUserContextProvider
+By default, Featurit SDK for Symfony comes with a default FeaturitUserContextProvider
 adapted for Symfony, but if you want to create your own, create a service un your `services.yaml` file as follows:
 
 ```
