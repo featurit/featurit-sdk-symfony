@@ -1,7 +1,9 @@
 parameters:
   tenant_identifier: '%env(FEATURIT_TENANT_IDENTIFIER)%'
   environment_key: '%env(FEATURIT_ENVIRONMENT_KEY)%'
+  enable_analytics: '%env(FEATURIT_ENABLE_ANALYTICS)%'
   cache_ttl_minutes: '%env(FEATURIT_CACHE_TTL_MINUTES)%'
+  send_analytics_interval_minutes: '%env(FEATURIT_SEND_ANALYTICS_INTERVAL_MINUTES)%'
 
 services:
   Featurit\Client\Featurit: '@featurit.client'
@@ -11,7 +13,9 @@ services:
     arguments:
       - '%tenant_identifier%'
       - '%environment_key%'
+      - '%enable_analytics%'
       - '%cache_ttl_minutes%'
+      - '%send_analytics_interval_minutes%'
       - '@featurit.featurit_user_context_provider'
   featurit.featurit_user_context_provider:
     class: Featurit\Client\Symfony\Providers\SymfonyFeaturitUserContextProvider

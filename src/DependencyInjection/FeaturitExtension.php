@@ -28,8 +28,16 @@ class FeaturitExtension extends Extension
             $definition->replaceArgument(1, $config['environment_key']);
         }
 
+        if ($config['enable_analytics']) {
+            $definition->replaceArgument(2, $config['enable_analytics']);
+        }
+
         if ($config['cache_ttl_minutes']) {
-            $definition->replaceArgument(2, $config['cache_ttl_minutes']);
+            $definition->replaceArgument(3, $config['cache_ttl_minutes']);
+        }
+
+        if ($config['send_analytics_interval_minutes']) {
+            $definition->replaceArgument(4, $config['send_analytics_interval_minutes']);
         }
 
         if ($config['featurit_user_context_provider']) {
