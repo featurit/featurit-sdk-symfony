@@ -7,7 +7,7 @@
     "require": {
         "php": "^8.0.2",
         "featurit/featurit-sdk-php": "^0.6.0",
-        "symfony/framework-bundle": "^5.2",
+        "symfony/framework-bundle": "^5.2 || ^6.0",
         "nyholm/psr7": "^1.5"
     },
     "require-dev": {
