@@ -1,5 +1,7 @@
 <?php
 
+namespace Featurit\Client\Symfony\Tests;
+
 use Featurit\Client\Symfony\DependencyInjection\FeaturitExtension;
 use Matthias\SymfonyDependencyInjectionTest\PhpUnit\AbstractExtensionTestCase;
 
@@ -24,10 +26,28 @@ class FeaturitExtensionTest extends AbstractExtensionTestCase
         $this->assertContainerBuilderHasParameter('environment_key', '%env(FEATURIT_ENVIRONMENT_KEY)%');
     }
 
+    public function test_it_loads_the_enable_analytics_parameter_with_correct_default_value(): void
+    {
+        $this->load();
+        $this->assertContainerBuilderHasParameter('enable_analytics', '%env(FEATURIT_ENABLE_ANALYTICS)%');
+    }
+
+    public function test_it_loads_the_enable_tracking_parameter_with_correct_default_value(): void
+    {
+        $this->load();
+        $this->assertContainerBuilderHasParameter('enable_tracking', '%env(FEATURIT_ENABLE_TRACKING)%');
+    }
+
     public function test_it_loads_the_cache_ttl_minutes_parameter_with_correct_default_value(): void
     {
         $this->load();
         $this->assertContainerBuilderHasParameter('cache_ttl_minutes', '%env(FEATURIT_CACHE_TTL_MINUTES)%');
+    }
+
+    public function test_it_loads_the_send_analytics_interval_minutes_parameter_with_correct_default_value(): void
+    {
+        $this->load();
+        $this->assertContainerBuilderHasParameter('send_analytics_interval_minutes', '%env(FEATURIT_SEND_ANALYTICS_INTERVAL_MINUTES)%');
     }
 
     public function test_it_has_featurit_client_service(): void

@@ -32,12 +32,16 @@ class FeaturitExtension extends Extension
             $definition->replaceArgument(2, $config['enable_analytics']);
         }
 
+        if ($config['enable_tracking']) {
+            $definition->replaceArgument(3, $config['enable_tracking']);
+        }
+
         if ($config['cache_ttl_minutes']) {
-            $definition->replaceArgument(3, $config['cache_ttl_minutes']);
+            $definition->replaceArgument(4, $config['cache_ttl_minutes']);
         }
 
         if ($config['send_analytics_interval_minutes']) {
-            $definition->replaceArgument(4, $config['send_analytics_interval_minutes']);
+            $definition->replaceArgument(5, $config['send_analytics_interval_minutes']);
         }
 
         if ($config['featurit_user_context_provider']) {

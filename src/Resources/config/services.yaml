@@ -2,6 +2,7 @@ parameters:
   tenant_identifier: '%env(FEATURIT_TENANT_IDENTIFIER)%'
   environment_key: '%env(FEATURIT_ENVIRONMENT_KEY)%'
   enable_analytics: '%env(FEATURIT_ENABLE_ANALYTICS)%'
+  enable_tracking: '%env(FEATURIT_ENABLE_TRACKING)%'
   cache_ttl_minutes: '%env(FEATURIT_CACHE_TTL_MINUTES)%'
   send_analytics_interval_minutes: '%env(FEATURIT_SEND_ANALYTICS_INTERVAL_MINUTES)%'
 
@@ -14,6 +15,7 @@ services:
       - '%tenant_identifier%'
       - '%environment_key%'
       - '%enable_analytics%'
+      - '%enable_tracking%'
       - '%cache_ttl_minutes%'
       - '%send_analytics_interval_minutes%'
       - '@featurit.featurit_user_context_provider'

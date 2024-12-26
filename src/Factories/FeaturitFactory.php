@@ -16,6 +16,7 @@ class FeaturitFactory
         string $tenantIdentifier = "",
         string $environmentKey = "",
         bool $enableAnalytics = false,
+        bool $enableTracking = false,
         int $cacheTtlMinutes = 5,
         int $sendAnalyticsIntervalMinutes = 1,
         FeaturitUserContextProvider $featuritUserContextProvider = null
@@ -29,6 +30,7 @@ class FeaturitFactory
             ->setTenantIdentifier($tenantIdentifier)
             ->setApiKey($environmentKey)
             ->setIsAnalyticsModuleEnabled($enableAnalytics)
+            ->setIsTrackingModuleEnabled($enableTracking)
             ->setSendAnalyticsIntervalMinutes($sendAnalyticsIntervalMinutes)
             ->setCacheTtlMinutes($cacheTtlMinutes)
             ->setFeaturitUserContextProvider($featuritUserContextProvider)

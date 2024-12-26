@@ -5,8 +5,8 @@
     "type": "symfony-bundle",
     "license": "MIT",
     "require": {
-        "php": "^8.0.2",
-        "featurit/featurit-sdk-php": "^0.8.0",
+        "php": "^8.1",
+        "featurit/featurit-sdk-php": "^0.9.1",
         "symfony/framework-bundle": "^5.2 || ^6.0",
         "nyholm/psr7": "^1.5"
     },
