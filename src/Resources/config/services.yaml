@@ -1,10 +1,10 @@
 parameters:
   tenant_identifier: '%env(FEATURIT_TENANT_IDENTIFIER)%'
   environment_key: '%env(FEATURIT_ENVIRONMENT_KEY)%'
-  enable_analytics: '%env(FEATURIT_ENABLE_ANALYTICS)%'
-  enable_tracking: '%env(FEATURIT_ENABLE_TRACKING)%'
-  cache_ttl_minutes: '%env(FEATURIT_CACHE_TTL_MINUTES)%'
-  send_analytics_interval_minutes: '%env(FEATURIT_SEND_ANALYTICS_INTERVAL_MINUTES)%'
+  enable_analytics: '%env(bool:FEATURIT_ENABLE_ANALYTICS)%'
+  enable_tracking: '%env(bool:FEATURIT_ENABLE_TRACKING)%'
+  cache_ttl_minutes: '%env(int:FEATURIT_CACHE_TTL_MINUTES)%'
+  send_analytics_interval_minutes: '%env(int:FEATURIT_SEND_ANALYTICS_INTERVAL_MINUTES)%'
 
 services:
   Featurit\Client\Featurit: '@featurit.client'
