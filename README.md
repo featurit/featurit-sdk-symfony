@@ -206,6 +206,10 @@ your_method(Featurit $featurit)
         )
     );
     
+    $featurit->trackPerson();
+    
+    // trackPerson will track a new Person with the data set in the FeaturitUserContext.
+    
     $featurit->track('YOUR_EVENT_NAME', [
         'an_event_property_name' => 'an_event_property_value',
         'another_event_property_name' => 'another_event_property_value',
