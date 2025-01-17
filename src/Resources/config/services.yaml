@@ -19,6 +19,7 @@ services:
       - '%cache_ttl_minutes%'
       - '%send_analytics_interval_minutes%'
       - '@featurit.featurit_user_context_provider'
+      - '@?featurit.cache'
   featurit.featurit_user_context_provider:
     class: Featurit\Client\Symfony\Providers\SymfonyFeaturitUserContextProvider
     arguments:

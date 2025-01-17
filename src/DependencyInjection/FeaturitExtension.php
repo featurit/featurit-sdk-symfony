@@ -50,5 +50,12 @@ class FeaturitExtension extends Extension
                 substr($config['featurit_user_context_provider'], 1)
             );
         }
+
+        if ($config['cache']) {
+            $container->setAlias(
+                'featurit.cache',
+                substr($config['cache'], 1)
+            );
+        }
     }
 }

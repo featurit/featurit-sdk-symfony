@@ -67,4 +67,12 @@ class FeaturitExtensionTest extends AbstractExtensionTestCase
         $this->load();
         $this->assertContainerBuilderHasAlias('Featurit\Client\Featurit');
     }
+
+    public function test_it_has_cache(): void
+    {
+        $this->load([
+            'cache' => '@my_custom_cache',
+        ]);
+        $this->assertContainerBuilderHasService('featurit.cache');
+    }
 }

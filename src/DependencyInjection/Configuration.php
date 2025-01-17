@@ -44,6 +44,10 @@ final class Configuration implements ConfigurationInterface
                     ->info('The user context provider for FeaturIT, must implement the ' . FeaturitUserContextProvider::class . ' interface')
                     ->defaultNull()
                 ->end()
+                ->scalarNode('cache')
+                    ->info('A cache implementation of psr/simple-cache')
+                    ->defaultNull()
+                ->end()
             ->end();
 
         return $treeBuilder;

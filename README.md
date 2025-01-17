@@ -39,13 +39,16 @@ with the following contents:
 
 ```
 featurit:
-    tenant_identifier: '%env(FEATURIT_TENANT_IDENTIFIER)%'
-    environment_key: '%env(FEATURIT_ENVIRONMENT_KEY)%'
-    enable_analytics: '%env(FEATURIT_ENABLE_ANALYTICS)%'
-    cache_ttl_minutes: '%env(FEATURIT_CACHE_TTL_MINUTES)%'
-    send_analytics_interval_minutes: '%env(FEATURIT_SEND_ANALYTICS_INTERVAL_MINUTES)%'
+    tenant_identifier: '%env(string:FEATURIT_TENANT_IDENTIFIER)%'
+    environment_key: '%env(string:FEATURIT_ENVIRONMENT_KEY)%'
+    enable_analytics: '%env(bool:FEATURIT_ENABLE_ANALYTICS)%'
+    enable_tracking: '%env(bool:FEATURIT_ENABLE_TRACKING)%'
+    cache_ttl_minutes: '%env(int:FEATURIT_CACHE_TTL_MINUTES)%'
+    send_analytics_interval_minutes: '%env(int:FEATURIT_SEND_ANALYTICS_INTERVAL_MINUTES)%'
     featurit_user_context_provider: '@my_service_implementing_featurit_user_context_provider'
 ```
+
+You also need to create the proper environment variables in your `.env` file.
 
 ### Basic Usage
 
@@ -222,6 +225,26 @@ FeaturitUserContext, if for some reason you want to send the event immediately, 
 
 ```
 $featurit->flush();
+```
+
+### Custom cache implementation
+
+By default, FeaturIT SDK for Symfony provides a simple File cache.
+Once you have multiple servers, you will want to inject your custom `Psr\SimpleCache\CacheInterface` implementation
+using some distributed cache system.
+
+This can be done as follows:
+
+```
+featurit:
+    tenant_identifier: '%env(string:FEATURIT_TENANT_IDENTIFIER)%'
+    environment_key: '%env(string:FEATURIT_ENVIRONMENT_KEY)%'
+    enable_analytics: '%env(bool:FEATURIT_ENABLE_ANALYTICS)%'
+    enable_tracking: '%env(bool:FEATURIT_ENABLE_TRACKING)%'
+    cache_ttl_minutes: '%env(int:FEATURIT_CACHE_TTL_MINUTES)%'
+    send_analytics_interval_minutes: '%env(int:FEATURIT_SEND_ANALYTICS_INTERVAL_MINUTES)%'
+    featurit_user_context_provider: '@my_service_implementing_featurit_user_context_provider'
+    cache: '@my_custom_psr_cache_interface_implementation'
 ```
 
 ### Authors
